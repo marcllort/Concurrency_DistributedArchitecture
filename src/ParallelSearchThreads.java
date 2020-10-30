@@ -18,7 +18,7 @@ public class ParallelSearchThreads extends Thread {
     }
 
     public int cercaParallela(int aBuscar, int[] array, int numThreads) {
-
+        long startTime = System.nanoTime();
         if (numThreads <= 0) {
             System.out.println("Error: Number of threads must be positive");
         }
@@ -46,7 +46,8 @@ public class ParallelSearchThreads extends Thread {
             try {
                 threads[i].join();
                 if (threads[i].getFound() != -1) {
-                    System.out.println("Thread number " + i + " found the number (" + aBuscar + ")");
+                    long totalTime = System.nanoTime() - startTime;
+                    System.out.println("Thread number " + i + " found the number (" + aBuscar + ") in time:" + totalTime);
                     return threads[i].getFound();
                 }
             } catch (InterruptedException e) {

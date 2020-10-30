@@ -6,8 +6,8 @@ import java.util.Random;
 public class Main {
 
     private static int NUMBER_TO_SEARCH = 49;
-    private static int MAX_NUMBERS = 100;
-    private static int NUMBER_THREADS = 4;
+    private static int MAX_NUMBERS = 100000;
+    private static int NUMBER_THREADS = 2;
 
     public static void main(String[] args) {
 
