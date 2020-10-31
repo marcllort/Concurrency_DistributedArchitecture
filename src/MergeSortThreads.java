@@ -38,6 +38,7 @@ public class MergeSortThreads extends Thread {
             rightThread.start();
 
             try {
+                // Wait till both threads have already merged their part of the array
                 leftThread.join();
                 rightThread.join();
             } catch (InterruptedException e) {
@@ -47,6 +48,7 @@ public class MergeSortThreads extends Thread {
 
             // https://www.geeksforgeeks.org/merge-sort/
 
+            // Merging part
             int i = 0, j = 0, k = 0;
 
             while (i < leftArray.length && j < rightArray.length) {

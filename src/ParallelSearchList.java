@@ -29,6 +29,7 @@ public class ParallelSearchList extends Thread {
         int start, end;
         long startTime, endTime;
 
+        // Same array, different order depending on direction var
         if (direction == 1) {
             start = 0;
             end = size;
@@ -37,7 +38,10 @@ public class ParallelSearchList extends Thread {
             start = size;
             end = 0;
             direction = -1;
+            // This case will always be faster, as the comparison that the compiler does in each loop will just compare to 0
+            // instead of having to retrieve the end value and comparing it
         }
+
         startTime = System.nanoTime();
         for (int i = start; i < end; i = i + direction) {
             if (searchNumber == (int) list.get(i)) {
@@ -45,6 +49,7 @@ public class ParallelSearchList extends Thread {
             }
         }
         endTime = System.nanoTime();
+
         time = endTime - startTime;
     }
 

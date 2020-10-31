@@ -6,14 +6,15 @@ import java.util.Random;
 public class Main {
 
     private static int NUMBER_TO_SEARCH = 49;
-    private static int MAX_NUMBERS = 100000;
-    private static int NUMBER_THREADS = 2;
+    private static int MAX_NUMBERS = 1000;
+    private static int NUMBER_THREADS = 8;
 
     public static void main(String[] args) {
 
         switch (Integer.parseInt(args[0])) {
 
             case 1:
+                // Exercise 3
                 ParallelSearchList thread1 = new ParallelSearchList(NUMBER_TO_SEARCH, MAX_NUMBERS, 1);
                 ParallelSearchList thread2 = new ParallelSearchList(NUMBER_TO_SEARCH, MAX_NUMBERS, -1);
                 thread1.start();
@@ -32,20 +33,23 @@ public class Main {
                 break;
 
             case 2:
+                // Exercise 4
                 ParallelSearchThreads parallelSearchThreads = new ParallelSearchThreads();
                 int[] array = generateArray();
-                int position = parallelSearchThreads.cercaParallela(array[45], array, NUMBER_THREADS);
+                int position = parallelSearchThreads.cercaParalela(array[NUMBER_TO_SEARCH], array, NUMBER_THREADS);
                 System.out.println("Position in the array was: " + position);
                 break;
 
             case 3:
+                // Exercise 5
                 ParallelSearchSharedMemory parallelSearchSharedMemory = new ParallelSearchSharedMemory();
                 int[] arraySharedMemory = generateArray();
-                int positionSharedMemory = parallelSearchSharedMemory.cercaParallela(arraySharedMemory[45], arraySharedMemory, NUMBER_THREADS);
+                int positionSharedMemory = parallelSearchSharedMemory.cercaParalela(arraySharedMemory[NUMBER_TO_SEARCH], arraySharedMemory, NUMBER_THREADS);
                 System.out.println("Position in the array was: " + positionSharedMemory);
                 break;
 
             case 4:
+                // Exercise 7
                 long startTime, totalTime;
                 int[] arrayMergeSort = generateArray();
                 MergeSortThreads mergeSortThreads = new MergeSortThreads(arrayMergeSort);
@@ -53,6 +57,7 @@ public class Main {
                 break;
 
             case 5:
+                // Exercise 8
                 int[] arrayMergeSortSeq = generateArray();
                 MergeSortSeq mergeSortSeq = new MergeSortSeq(arrayMergeSortSeq);
                 mergeSortSeq.mergeSort();

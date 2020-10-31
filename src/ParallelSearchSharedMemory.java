@@ -1,12 +1,10 @@
-import java.util.Arrays;
-
 public class ParallelSearchSharedMemory extends Thread {
 
+    private static int searchNumber;
+    private static int[] array;
     private int found;
     private int startPosition;
     private int endPosition;
-    private static int searchNumber;
-    private static int[] array;
 
     public ParallelSearchSharedMemory() {
     }
@@ -18,7 +16,7 @@ public class ParallelSearchSharedMemory extends Thread {
         this.searchNumber = searchNumber;
     }
 
-    public int cercaParallela(int aBuscar, int[] array, int numThreads) {
+    public int cercaParalela(int aBuscar, int[] array, int numThreads) {
         long startTime = System.nanoTime();
         if (numThreads <= 0) {
             System.out.println("Error: Number of threads must be positive");
@@ -35,6 +33,7 @@ public class ParallelSearchSharedMemory extends Thread {
 
         ParallelSearchSharedMemory threads[] = new ParallelSearchSharedMemory[numThreads];
 
+        // Start threads
         for (int i = 0; i < numThreads - 1; i++) {
             threads[i] = new ParallelSearchSharedMemory(aBuscar, position, position + sizePerThread);
             position += sizePerThread;
@@ -46,6 +45,7 @@ public class ParallelSearchSharedMemory extends Thread {
 
         for (int i = 0; i < numThreads; i++) {
             try {
+                // Join and show times
                 threads[i].join();
                 if (threads[i].getFound() != -1) {
                     long totalTime = System.nanoTime() - startTime;

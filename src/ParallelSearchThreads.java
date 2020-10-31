@@ -17,7 +17,7 @@ public class ParallelSearchThreads extends Thread {
         this.array = array;
     }
 
-    public int cercaParallela(int aBuscar, int[] array, int numThreads) {
+    public int cercaParalela(int aBuscar, int[] array, int numThreads) {
         long startTime = System.nanoTime();
         if (numThreads <= 0) {
             System.out.println("Error: Number of threads must be positive");

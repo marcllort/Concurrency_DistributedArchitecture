@@ -19,6 +19,21 @@ public class MergeSortSeq {
         System.out.println("Array has been merge-sorted sequentially in time: " + totalTime);
     }
 
+    // Main function that sorts arr[l..r] using merge()
+    public void sort(int arr[], int l, int r) {
+        if (l < r) {
+            // Find the middle point
+            int m = (l + r) / 2;
+
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+
+            // Merge the sorted halves
+            merge(arr, l, m, r);
+        }
+    }
+
     private void merge(int arr[], int l, int m, int r) {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
@@ -42,7 +57,7 @@ public class MergeSortSeq {
         // Initial index of merged subarry array
         int k = l;
         while (i < n1 && j < n2) {
-            if (L[i] <= R[j]) {
+            if (L[i] <= R[j]) {         // Order the incoming subarrays
                 arr[k] = L[i];
                 i++;
             } else {
@@ -64,22 +79,6 @@ public class MergeSortSeq {
             arr[k] = R[j];
             j++;
             k++;
-        }
-    }
-
-    // Main function that sorts arr[l..r] using
-    // merge()
-    public void sort(int arr[], int l, int r) {
-        if (l < r) {
-            // Find the middle point
-            int m = (l + r) / 2;
-
-            // Sort first and second halves
-            sort(arr, l, m);
-            sort(arr, m + 1, r);
-
-            // Merge the sorted halves
-            merge(arr, l, m, r);
         }
     }
 
