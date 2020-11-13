@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Main {
 
-    private static int NUMBER_TO_SEARCH = 49;
-    private static int MAX_NUMBERS = 1000;
+    private static int NUMBER_TO_SEARCH = 99;
+    private static int MAX_NUMBERS = 100;
     private static int NUMBER_THREADS = 8;
 
     public static void main(String[] args) {
@@ -15,8 +15,8 @@ public class Main {
 
             case 1:
                 // Exercise 3
-                ParallelSearchList thread1 = new ParallelSearchList(NUMBER_TO_SEARCH, MAX_NUMBERS, 1);
-                ParallelSearchList thread2 = new ParallelSearchList(NUMBER_TO_SEARCH, MAX_NUMBERS, -1);
+                ParallelSearchList thread1 = new ParallelSearchList(MAX_NUMBERS, NUMBER_TO_SEARCH, 1);
+                ParallelSearchList thread2 = new ParallelSearchList(MAX_NUMBERS, NUMBER_TO_SEARCH, -1);
                 thread1.start();
                 thread2.start();
                 try {
