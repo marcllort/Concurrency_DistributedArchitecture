@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class Main {
 
-    private static int NUMBER_TO_SEARCH = 99;
-    private static int MAX_NUMBERS = 100;
+    private static int NUMBER_TO_SEARCH = 250;
+    private static int MAX_NUMBERS = 1000000;
     private static int NUMBER_THREADS = 8;
 
     public static void main(String[] args) {
@@ -50,7 +50,6 @@ public class Main {
 
             case 4:
                 // Exercise 7
-                long startTime, totalTime;
                 int[] arrayMergeSort = generateArray();
                 MergeSortThreads mergeSortThreads = new MergeSortThreads(arrayMergeSort);
                 mergeSortThreads.sort();

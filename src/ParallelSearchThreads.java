@@ -42,7 +42,7 @@ public class ParallelSearchThreads extends Thread {
         threads[numThreads - 1] = new ParallelSearchThreads(Arrays.copyOfRange(array, position, position + sizePerThread + mod), aBuscar, position);
         threads[numThreads - 1].start();
 
-        for (int i = 0; i < numThreads; i++) {
+        for (int i = 0; i < numThreads; i++) {  // This for makes everything go slower, as maybe a thread already found the solution but until the previous threads have finished, its won't be detected.
             try {
                 threads[i].join();
                 if (threads[i].getFound() != -1) {
